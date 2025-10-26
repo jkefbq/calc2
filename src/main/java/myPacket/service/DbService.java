@@ -2,29 +2,31 @@ package myPacket.service;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import myPacket.entity.EntityOne;
-import myPacket.entity.EntityTwo;
-import myPacket.repos.EntityOneRepository;
-import myPacket.repos.EntityTwoRepository;
+import myPacket.entity.ExampleSymbol;
+import myPacket.entity.Example;
+import myPacket.repos.ExampleSymbolRepository;
+import myPacket.repos.ExampleRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class DbService {
 
-    private final EntityOneRepository repo1;
-    private final EntityTwoRepository repo2;
+    private final ExampleSymbolRepository repo1;
+    private final ExampleRepository repo2;
 
     @Transactional
     public void createRecord(String res, String sym, int a, int b) {
-        repo2.save(new EntityTwo(a, b, res, repo1.save(new EntityOne(sym))));
+        repo2.save(new Example(a, b, res, repo1.save(new ExampleSymbol(sym))));
         System.out.println("CREATE");
     }
 
     @Transactional
     public void updateRecord(String res, String sym, int a, int b) {
-        EntityOne entityOne = repo1.getBySymbol(sym);//нашли в 'one' запись с нужным символом
-        repo2.getBySymbolId(entityOne).updateEntityTwo(res, a, b);//нашли в 'two' запись с таким же entityOne => с нужным символом + обновили
+        ExampleSymbol exSym = repo1.findBySymbol(sym);
+        Example ex = repo2.findByExampleSymbol(exSym);
+        Example.updateExample(ex, res, a, b);
+        repo2.save(ex);
         System.out.println("UPDATE");
     }
 }

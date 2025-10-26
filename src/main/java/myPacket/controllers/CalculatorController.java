@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @AllArgsConstructor
-public class SecondController {
+public class CalculatorController {
 
     private RestController1 restController1;
     private CalculateService calcService;

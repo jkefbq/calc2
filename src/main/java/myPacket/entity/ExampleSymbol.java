@@ -1,7 +1,10 @@
 package myPacket.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,13 +16,13 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @NoArgsConstructor
-public class EntityOne {
+public class ExampleSymbol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String symbol;
 
-    public EntityOne(String symbol) {
+    public ExampleSymbol(String symbol) {
         this.symbol = symbol;
     }
 }

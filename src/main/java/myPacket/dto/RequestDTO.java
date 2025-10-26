@@ -1,9 +1,9 @@
 package myPacket.dto;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class RequestDTO {
     private int a;
