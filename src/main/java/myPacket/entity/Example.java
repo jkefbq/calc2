@@ -24,7 +24,7 @@ public class Example {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne//(cascade = CascadeType.PERSIST)
+    @OneToOne
     @JoinColumn(name = "symbol_id")
     private ExampleSymbol exampleSymbol;
 
@@ -32,6 +32,7 @@ public class Example {
     private int num1;
     @Column(name = "num_2")
     private int num2;
+
     private String result;
 
     public Example(int num1, int num2, String result, ExampleSymbol exampleSymbol) {
