@@ -15,36 +15,39 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "two")
+@Table(name = "calc_info")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Example {
+public class CalcInfo {
+    /**
+     * CalcInfo:
+     * <blockquote><pre>
+     * +----+------+------+-----------+--------+
+     * | id | num1 | num2 | symbol_id | result |
+     * +----+------+------+-----------+--------+
+     * | 38 | 3629 | 2215 |     3     |  1414  |
+     * +----+------+------+-----------+--------+
+     * </pre></blockquote>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "symbol_id")
-    private ExampleSymbol exampleSymbol;
+    @JoinColumn(name = "symbol_info_id")
+    private SymbolInfo symbolInfo;
 
     @Column(name = "num_1")
     private int num1;
     @Column(name = "num_2")
     private int num2;
-
     private String result;
 
-    public Example(int num1, int num2, String result, ExampleSymbol exampleSymbol) {
+    public CalcInfo(int num1, int num2, String result, SymbolInfo symbolInfo) {
         this.num2 = num2;
         this.num1 = num1;
         this.result = result;
-        this.exampleSymbol = exampleSymbol;
-    }
-
-    public static void updateExample(Example example, String result, int num1, int num2) {
-        example.setResult(result);
-        example.setNum1(num1);
-        example.setNum2(num2);
+        this.symbolInfo = symbolInfo;
     }
 }

@@ -18,8 +18,10 @@ public class CalculatorController {
 
     @PostMapping("/calc")
     public String printResult(@ModelAttribute RequestDTO request, Model model) {
-        restController1.calculateAndCreateOrUpdate(request.getA(), request.getB(), request.getSymbol());
-        model.addAttribute("result", calcService.calculateResult(request.getSymbol(), request.getA(), request.getB()));
+        restController1.calculateAndCreateOrUpdate(
+                request.getA(), request.getB(), request.getSymbol());
+        model.addAttribute(
+                "result", calcService.calculate(request.getSymbol(), request.getA(), request.getB()));
         model.addAttribute("requestDTO", request);
         return "request-page";
     }
@@ -30,6 +32,5 @@ public class CalculatorController {
             model.addAttribute("requestDTO", new RequestDTO());
         }
         return "request-page";
-
     }
 }

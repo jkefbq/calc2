@@ -12,17 +12,27 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "one")
+@Table(name = "symbol_info")
 @Getter
 @Setter
 @NoArgsConstructor
-public class ExampleSymbol {
+public class SymbolInfo {
+    /**
+     * Example:
+     * <blockquote><pre>
+     * +------+--------+
+     * |  id  | symbol |
+     * +------+--------+
+     * |   1  |   "+"  |
+     * +------+--------+
+     * </pre></blockquote>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String symbol;
 
-    public ExampleSymbol(String symbol) {
+    public SymbolInfo(String symbol) {
         this.symbol = symbol;
     }
 }
