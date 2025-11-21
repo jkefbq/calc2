@@ -3,7 +3,7 @@ package myPacket.service;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import myPacket.builders.classes.CalcInfoBuilder;
+import myPacket.builders.CalcInfoBuilder;
 import myPacket.entity.CalcInfo;
 import myPacket.entity.SymbolInfo;
 import myPacket.repos.CalcInfoRepository;
@@ -19,14 +19,14 @@ public class DbService {
     private final CalcInfoRepository calcInfoRepo;
 
     @Transactional
-    public void createRecord(String res, String sym, int num1, int num2) {
+    public void createRecord(int res, String sym, int num1, int num2) {
         calcInfoRepo.save(
                 new CalcInfo(num1, num2, res, symInfoRepo.save(new SymbolInfo(sym)))
         );
     }
 
     @Transactional
-    public void updateRecord(String res, String sym, int num1, int num2) {
+    public void updateRecord(int res, String sym, int num1, int num2) {
         SymbolInfo symInfo = symInfoRepo.findBySymbol(sym);
         CalcInfo calcInfo = calcInfoRepo.findBySymbolInfo(symInfo);
         calcInfoRepo.save(

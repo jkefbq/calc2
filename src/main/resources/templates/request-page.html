@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,7 +11,7 @@
 <body>
 
 <form action="http://localhost:8080/calc" method="post"
-th:object="${requestDTO}">
+th:object="${requestDto}">
     <div class="container">
         <label for="a">A:</label>
         <input type="number" name="a"
@@ -32,11 +32,13 @@ th:object="${requestDTO}">
             th:field="*{symbol}" id="symbol"
         </select>
     </div>
-    <button class="container">calculate</button>
-    <div class="container">
-        <b th:text="${result}"></b>
-    </div>
+    <button type="submit">CALCULATE</button>
 </form>
+    <div class="container">
+        <b th:if="${isError}">error: <b th:text="${errorInfo}"></b></b>
+        <b th:if="${isDone}">result: <b th:text="${result}"></b></b>
+        <b th:unless="${isDone}"></b>
+    </div>
 
 </body>
 </html>

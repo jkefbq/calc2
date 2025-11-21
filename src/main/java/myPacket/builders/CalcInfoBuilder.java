@@ -1,31 +1,25 @@
-package myPacket.builders.classes;
+package myPacket.builders;
 
 import lombok.AllArgsConstructor;
-import myPacket.builders.interfaces.CalcInfoBuild;
+import lombok.Getter;
 import myPacket.entity.CalcInfo;
 
+@Getter
 @AllArgsConstructor
-public class CalcInfoBuilder implements CalcInfoBuild {
+public class CalcInfoBuilder {
     private final CalcInfo calcInfo;
 
-    public CalcInfo getCalcInfo() {
-        return this.calcInfo;
-    }
-
-    @Override
     public CalcInfoBuilder setNum1(int num1) {
         calcInfo.setNum1(num1);
         return this;
     }
 
-    @Override
     public CalcInfoBuilder setNum2(int num2) {
         calcInfo.setNum2(num2);
         return this;
     }
 
-    @Override
-    public CalcInfoBuilder setResult(String res) {
+    public CalcInfoBuilder setResult(int res) {
         calcInfo.setResult(res);
         return this;
     }

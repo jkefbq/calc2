@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class RequestDTO {
+public class RequestDto {
     private int a;
     private int b;
     private String symbol;

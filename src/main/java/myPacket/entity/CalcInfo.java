@@ -20,16 +20,6 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 public class CalcInfo {
-    /**
-     * CalcInfo:
-     * <blockquote><pre>
-     * +----+------+------+-----------+--------+
-     * | id | num1 | num2 | symbol_id | result |
-     * +----+------+------+-----------+--------+
-     * | 38 | 3629 | 2215 |     3     |  1414  |
-     * +----+------+------+-----------+--------+
-     * </pre></blockquote>
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -42,9 +32,9 @@ public class CalcInfo {
     private int num1;
     @Column(name = "num_2")
     private int num2;
-    private String result;
+    private int result;
 
-    public CalcInfo(int num1, int num2, String result, SymbolInfo symbolInfo) {
+    public CalcInfo(int num1, int num2, int result, SymbolInfo symbolInfo) {
         this.num2 = num2;
         this.num1 = num1;
         this.result = result;

@@ -17,16 +17,6 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 public class SymbolInfo {
-    /**
-     * Example:
-     * <blockquote><pre>
-     * +------+--------+
-     * |  id  | symbol |
-     * +------+--------+
-     * |   1  |   "+"  |
-     * +------+--------+
-     * </pre></blockquote>
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
